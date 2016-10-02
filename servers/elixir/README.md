@@ -18,9 +18,11 @@ mix phoenix.server
 
 Visite [`localhost:4000`](http://localhost:4000) no seu browser.
 
-## Deploy
+## Produção
 
 Vamos fazer o deploy da aplicação para o [Heroku](https://www.heroku.com/). Para maiores detalhes verifique a [Documentação do Phoenix](http://www.phoenixframework.org/docs/heroku). Antes de começar, crie uma conta no [Heroku](https://www.heroku.com/).
+
+### Configuração
 
 ```bash
 heroku create --buildpack "https://github.com/HashNuke/heroku-buildpack-elixir.git"
@@ -51,4 +53,19 @@ Crie a chave `SECRET_KEY_BASE` e adicione ela nas configurações do Heroku:
 ```bash
 mix phoenix.gen.secret
 heroku config:set SECRET_KEY_BASE="<SECRET_KEY_BASE>"
+```
+
+### Deploy
+
+Rode as migrações de banco:
+
+```bash
+heroku run "POOL_SIZE=2 mix ecto.migrate"
+```
+
+No diretório raiz execute:
+
+```
+git subtree push --prefix servers/elixir heroku master
+heroku open
 ```
