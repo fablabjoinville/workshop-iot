@@ -1,0 +1,21 @@
+<h2>Listing measures</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Type</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <%= for measure <- @measures do %>
+    <tr>
+      <td><%= measure.value %></td>
+      <td><%= measure.type %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
