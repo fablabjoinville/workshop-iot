@@ -11,11 +11,22 @@
 
 ## Desenvolvimento
 
-Inicie a IDE do Arduino e abra as Preferências. Adicione a URL `http://arduino.esp8266.com/stable/package_esp8266com_index.json` no campo `Additional Board Manager URLs`. Aperte OK. Abra o `Boards Manager` no menu `Tools > Board` e instale a plataforma `esp8266`. Após a instalação, selecione `ESP8266` em `Tools > Board`.
+Inicie a IDE do Arduino e abra as Preferências. Adicione a URL `http://arduino.esp8266.com/stable/package_esp8266com_index.json` no campo `Additional Board Manager URLs`. Aperte OK. Abra o `Boards Manager` no menu `Tools > Board` e instale a plataforma `esp8266 by ESP8266 Community` na versão `2.3.0`. Após a instalação, selecione `ESP8266` em `Tools > Board`.
 
 Você pode configurar sua placa para desenvolvimento usando OTA (Over the Air). Dessa forma você não precisa ter uma conexão física com o computador para fazer o upload dos seus sketches Arduino. Veja a [documentação](https://github.com/esp8266/Arduino/blob/master/doc/ota_updates/readme.md#arduino-ide) para mais detalhes.
 
+Nos códigos de exemplo, substitua `<SSID>`, `<PASSWORD>` e `<SERVER>` pelos respectivos valores.
+
 ### Cliente HTTP
+
+Vamos utilizar a biblioteca [esphttpclient](https://github.com/Caerbannog/esphttpclient) para realizar as requisições HTTP.
+
+Lembre-se de que nós estamos trabalhando com um dispositivo com memória muito limitada. Por este motivo requisitar páginas web com tamanho superior a memória disponível vai resultar em falhas.
+
+* RAW Text GET `RawGet/`
+* RAW Text POST `RawPost/`
+* ESP8266HTTPClient GET `HttpGet/`
+* ESP8266HTTPClient POST `HttpPost/`
 
 ### Cliente MTQQ
 
