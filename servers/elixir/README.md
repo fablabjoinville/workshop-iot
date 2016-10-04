@@ -69,3 +69,21 @@ No diretório raiz execute:
 git subtree push --prefix servers/elixir heroku master
 heroku open
 ```
+
+
+### Docker Dev
+
+#### Cria a imagem docker do servidor elixir
+docker build -t fablab_iot_server .
+
+#### Inicia o container docker com o banco de dados postgres
+docker run --name iot_db_server -e POSTGRES_USER=postgres -e  POSTGRES_PASSWORD=postgres -e POSTGRES_DB=iot_server_dev -d postgres
+
+#### Criar banco de dados
+docker run -d -p 4000:4000 -e MIX_ENV=dev --link iot_db_server:iot_db_server fablab_iot_server /bin/bash -c "cd /srv/iot; mix ecto.create; mix ecto.migrate; mix phoenix.server"
+
+#### Inicia o container docker para conecao com o banco (apenas para manutenção)
+docker run -it --rm --link iot_db_server:iot_db_server postgres psql -h postgres -U postgres
+
+
+

@@ -11,6 +11,7 @@ config :iot_server, IotServer.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
+  code_reloading: false,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
                     cd: Path.expand("../", __DIR__)]]
 
@@ -39,5 +40,5 @@ config :iot_server, IotServer.Repo,
   username: "postgres",
   password: "postgres",
   database: "iot_server_dev",
-  hostname: "localhost",
+  hostname: "iot_db_server",
   pool_size: 10
